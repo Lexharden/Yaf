@@ -1,0 +1,173 @@
+# Ejemplo 4: Funciones
+# Demostracion completa de funciones: parametros, tipos de retorno, recursion y logica compleja
+
+func saludar_personalizado(nombre: string, hora: int) {
+    print("Hola ", nombre, "!")
+    if hora < 12 {
+        print("Buenos dias!")
+    } else {
+        if hora < 18 {
+            print("Buenas tardes!")
+        } else {
+            print("Buenas noches!")
+        }
+    }
+}
+
+func calcular_area_rectangulo(largo: int, ancho: int) -> int {
+    return largo * ancho
+}
+
+func calcular_volumen_cubo(lado: int) -> int {
+    return lado * lado * lado
+}
+
+func es_numero_primo(numero: int) -> bool {
+    if numero <= 1 {
+        return false
+    }
+    
+    if numero == 2 {
+        return true
+    }
+    
+    if numero % 2 == 0 {
+        return false
+    }
+    
+    divisor = 3
+    while divisor * divisor <= numero {
+        if numero % divisor == 0 {
+            return false
+        }
+        divisor = divisor + 2
+    }
+    
+    return true
+}
+
+func factorial(n: int) -> int {
+    if n <= 1 {
+        return 1
+    }
+    return n * factorial(n - 1)
+}
+
+func fibonacci(n: int) -> int {
+    if n <= 1 {
+        return n
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2)
+}
+
+func encontrar_maximo(a: int, b: int, c: int) -> int {
+    maximo = a
+    if b > maximo {
+        maximo = b
+    }
+    if c > maximo {
+        maximo = c
+    }
+    return maximo
+}
+
+func invertir_numero(numero: int) -> int {
+    resultado = 0
+    while numero > 0 {
+        digito = numero % 10
+        resultado = resultado * 10 + digito
+        numero = numero / 10
+    }
+    return resultado
+}
+
+func contar_digitos(numero: int) -> int {
+    if numero == 0 {
+        return 1
+    }
+    
+    contador = 0
+    temp = numero
+    if temp < 0 {
+        temp = -temp
+    }
+    
+    while temp > 0 {
+        contador = contador + 1
+        temp = temp / 10
+    }
+    
+    return contador
+}
+
+func main() {
+    print("=== Demostracion Completa de Funciones ===")
+    
+    # Funcion sin retorno
+    saludar_personalizado("Ana", 14)
+    print()
+    
+    # Funciones con calculos
+    area = calcular_area_rectangulo(8, 5)
+    print("Area del rectangulo 8x5: ", int_to_string(area))
+    
+    volumen = calcular_volumen_cubo(4)
+    print("Volumen del cubo de lado 4: ", int_to_string(volumen))
+    print()
+    
+    # Funcion con logica compleja
+    numero_test = 17
+    if es_numero_primo(numero_test) {
+        print(int_to_string(numero_test), " es un numero primo")
+    } else {
+        print(int_to_string(numero_test), " no es un numero primo")
+    }
+    print()
+    
+    # Funciones recursivas
+    fact_5 = factorial(5)
+    print("Factorial de 5: ", int_to_string(fact_5))
+    
+    fib_8 = fibonacci(8)
+    print("Fibonacci de 8: ", int_to_string(fib_8))
+    print()
+    
+    # Funcion con multiples parametros
+    max_valor = encontrar_maximo(15, 23, 19)
+    print("Maximo entre 15, 23, 19: ", int_to_string(max_valor))
+    print()
+    
+    # Funciones con manipulacion de numeros
+    numero_original = 12345
+    numero_invertido = invertir_numero(numero_original)
+    digitos = contar_digitos(numero_original)
+    
+    print("Numero original: ", int_to_string(numero_original))
+    print("Numero invertido: ", int_to_string(numero_invertido))
+    print("Cantidad de digitos: ", int_to_string(digitos))
+    print()
+    
+    # Demostracion interactiva
+    print("=== Calculadora Interactiva ===")
+    print("Ingresa el primer numero: ")
+    num1_str = input()
+    num1 = string_to_int(num1_str)
+    
+    print("Ingresa el segundo numero: ")
+    num2_str = input()
+    num2 = string_to_int(num2_str)
+    
+    print("Ingresa el tercer numero: ")
+    num3_str = input()
+    num3 = string_to_int(num3_str)
+    
+    suma_total = num1 + num2 + num3
+    maximo_ingresado = encontrar_maximo(num1, num2, num3)
+    
+    print("Suma total: ", int_to_string(suma_total))
+    print("Numero maximo: ", int_to_string(maximo_ingresado))
+    
+    if es_numero_primo(maximo_ingresado) {
+        print("El numero maximo es primo!")
+    }
+}

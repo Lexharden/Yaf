@@ -1,0 +1,49 @@
+# Ejemplo 5: Arrays y Loops
+# Manejo de arrays y diferentes tipos de bucles
+
+func main() {
+    print("=== Arrays y Loops en YAF ===")
+    
+    # Declarar e inicializar arrays
+    numeros = [1, 2, 3, 4, 5]
+    contador = 0
+    
+    print("Array inicial:")
+    for i = 0; i < 5; i = i + 1 {
+        print("numeros[", int_to_string(i), "] = ", int_to_string(numeros[i]))
+    }
+    
+    # Suma de elementos
+    suma_total = 0
+    for i = 0; i < 5; i = i + 1 {
+        suma_total = suma_total + numeros[i]
+    }
+    print("Suma total: ", int_to_string(suma_total))
+    
+    # Buscar el maximo
+    maximo = numeros[0]
+    for i = 1; i < 5; i = i + 1 {
+        if numeros[i] > maximo {
+            maximo = numeros[i]
+        }
+    }
+    print("Numero maximo: ", int_to_string(maximo))
+    
+    # Contar numeros pares
+    pares = 0
+    for i = 0; i < 5; i = i + 1 {
+        if numeros[i] % 2 == 0 {
+            pares = pares + 1
+        }
+    }
+    print("Numeros pares: ", int_to_string(pares))
+    
+    # While loop para mostrar countdown
+    print("\nCountdown:")
+    contador = 5
+    while contador > 0 {
+        print(int_to_string(contador))
+        contador = contador - 1
+    }
+    print("Liftoff!")
+}

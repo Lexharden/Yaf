@@ -1,0 +1,111 @@
+func calcular_dano(ataque: int, nivel: int) -> int {
+    return ataque + (nivel * 2)
+}
+
+func usar_pocion(vida_actual: int) -> int {
+    curacion = 30
+    return vida_actual + curacion
+}
+
+func main() {
+    print("=== YAF RPG GAME ===")
+    
+    print("Nombre del heroe: ")
+    nombre = input()
+    
+    vida_heroe = 100
+    nivel_heroe = 1
+    ataque_base = 20
+    pociones = 3
+    oro = 50
+    
+    print("Heroe ", nombre, " nivel ", int_to_string(nivel_heroe))
+    print("Vida: ", int_to_string(vida_heroe))
+    print("Oro: ", int_to_string(oro))
+    
+    juego_activo = 1
+    
+    while juego_activo == 1 {
+        print("")
+        print("=== MENU ===")
+        print("1. Buscar enemigo")
+        print("2. Ver stats")
+        print("3. Usar pocion")
+        print("4. Salir")
+        print("Accion: ")
+        
+        accion_str = input()
+        accion = string_to_int(accion_str)
+        
+        if accion == 1 {
+            print("Aparece un Orco!")
+            vida_enemigo = 50
+            ataque_enemigo = 15
+            
+            combate = 1
+            while combate == 1 {
+                print("")
+                print("Tu vida: ", int_to_string(vida_heroe))
+                print("Vida enemigo: ", int_to_string(vida_enemigo))
+                print("1. Atacar  2. Huir")
+                print("Que haces: ")
+                
+                combate_str = input()
+                combate_accion = string_to_int(combate_str)
+                
+                if combate_accion == 1 {
+                    dano = calcular_dano(ataque_base, nivel_heroe)
+                    vida_enemigo = vida_enemigo - dano
+                    print("Causas ", int_to_string(dano), " de dano")
+                    
+                    if vida_enemigo <= 0 {
+                        print("Enemigo derrotado!")
+                        oro = oro + 20
+                        print("Oro ganado: 20")
+                        combate = 0
+                    } else {
+                        print("El enemigo ataca!")
+                        vida_heroe = vida_heroe - ataque_enemigo
+                        print("Recibes ", int_to_string(ataque_enemigo), " de dano")
+                        
+                        if vida_heroe <= 0 {
+                            print("GAME OVER!")
+                            juego_activo = 0
+                            combate = 0
+                        }
+                    }
+                } else {
+                    print("Huyes del combate")
+                    combate = 0
+                }
+            }
+        } else {
+            if accion == 2 {
+                print("")
+                print("=== ESTADISTICAS ===")
+                print("Nombre: ", nombre)
+                print("Nivel: ", int_to_string(nivel_heroe))
+                print("Vida: ", int_to_string(vida_heroe))
+                print("Ataque: ", int_to_string(ataque_base))
+                print("Oro: ", int_to_string(oro))
+                print("Pociones: ", int_to_string(pociones))
+            } else {
+                if accion == 3 {
+                    if pociones > 0 {
+                        vida_heroe = usar_pocion(vida_heroe)
+                        pociones = pociones - 1
+                        print("Usas pocion. Vida: ", int_to_string(vida_heroe))
+                        print("Pociones restantes: ", int_to_string(pociones))
+                    } else {
+                        print("No tienes pociones")
+                    }
+                } else {
+                    if accion == 4 {
+                        print("Gracias por jugar!")
+                        juego_activo = 0
+                    }
+                }
+            }
+        }
+    }
+}

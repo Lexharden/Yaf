@@ -1,0 +1,47 @@
+# Ejemplo 6: Funciones Matematicas
+# Operaciones matematicas avanzadas
+
+func potencia(base: int, exp: int) -> int {
+    if exp == 0 {
+        return 1
+    }
+    return base * potencia(base, exp - 1)
+}
+
+func factorial(n: int) -> int {
+    if n <= 1 {
+        return 1
+    }
+    return n * factorial(n - 1)
+}
+
+func main() {
+    print("=== Funciones Matematicas ===")
+    
+    # Potencia
+    resultado1 = potencia(2, 8)
+    print(resultado1)
+    
+    # Factorial
+    resultado2 = factorial(5)
+    print(resultado2)
+    
+    # Operaciones directas
+    a = 15
+    b = 3
+    
+    print(a + b)
+    print(a - b)  
+    print(a * b)
+    print(a / b)
+    print(a % b)
+    
+    # Comparaciones
+    if a > b {
+        print("15 > 3")
+    }
+    
+    if b < a {
+        print("3 < 15")
+    }
+}

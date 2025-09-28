@@ -1,0 +1,39 @@
+# Ejemplo 2: Calculadora Interactiva
+# Variables y operaciones matematicas con input del usuario
+
+func main() {
+    print("=== Calculadora Interactiva ===")
+    
+    print("Ingresa tu nombre: ")
+    nombre = input()
+    
+    print("Hola ", nombre, "! Vamos a hacer calculos")
+    
+    print("Ingresa el primer numero: ")
+    num1_str = input()
+    num1 = string_to_int(num1_str)
+    
+    print("Ingresa el segundo numero: ")
+    num2_str = input()
+    num2 = string_to_int(num2_str)
+    
+    print("\nResultados con ", int_to_string(num1), " y ", int_to_string(num2), ":")
+    
+    suma = num1 + num2
+    print("Suma: ", int_to_string(suma))
+    
+    resta = num1 - num2
+    print("Resta: ", int_to_string(resta))
+    
+    multiplicacion = num1 * num2
+    print("Multiplicacion: ", int_to_string(multiplicacion))
+    
+    if num2 != 0 {
+        division = num1 / num2
+        print("Division: ", int_to_string(division))
+    } else {
+        print("No se puede dividir por cero")
+    }
+    
+    print("\nGracias por usar la calculadora, ", nombre, "!")
+}

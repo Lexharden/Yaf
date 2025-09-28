@@ -1,0 +1,7 @@
+# Ejemplo 1: Hola Mundo - Lo más básico en YAF
+# Este es tu primer programa en YAF
+
+func main() {
+    print("¡Hola, mundo desde YAF!")
+    print("¡Bienvenido al lenguaje YAF!")
+}

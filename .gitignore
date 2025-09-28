@@ -1,0 +1,146 @@
+# Rust
+/target/
+**/*.rs.bk
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Thumbs.db
+
+# Yaf compiler outputs
+# Archivos de salida del compilador YAF
+*.yaf.c
+*.yaf.o
+*.yaf.exe
+
+# Ejecutables generados en examples/
+examples/*_*
+!examples/*.yaf
+!examples/README.md
+
+# Ejecutables generados en examples (mantener solo .yaf)
+/examples/*
+!/examples/**/*.yaf
+
+# Test / playground outputs
+*.yaf.out
+*.yaf.test
+*.yaf.tmp
+*.tmp
+*.temp
+*test*
+bench_*
+profiling_*
+
+# Logs / dumps / perfiles
+*.log
+*.trace
+*.stackdump
+*.core
+core.*
+perf.data*
+*.profraw
+*.profdata
+
+# Temporary files
+*~
+.#*
+\#*#
+
+# Build artifacts
+/dist/
+/build/
+
+# Package managers
+node_modules/
+npm-debug.log*
+
+# Coverage
+coverage/
+
+# Benchmarks
+criterion/
+
+# Documentation build artefacts
+book/
+/site/
+
+# Misc editors
+*.kate-swp
+*.orig
+
+# Crash reports
+report.*
+
+# Git
+*.patch
+*.diff
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Release assets y distribución
+release-v*/
+release/
+releases/
+dist/
+*.tar.gz
+*.zip
+*.deb
+*.rpm
+*.msi
+*.dmg
+*.pkg
+RELEASE_NOTES_v*.md
+GITHUB_RELEASE_GUIDE.md
+prepare-release.sh
+build-release.sh
+release-*.sh
+*-release.sh
+
+# Binarios de distribución
+yaf-v*
+yaf-*-*-*
+*-darwin-*
+*-linux-*
+*-windows-*
+*-arm64*
+*-x86_64*
+
+# macOS specific
+._*
+.AppleDouble
+.LSOverride
+Icon?
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk

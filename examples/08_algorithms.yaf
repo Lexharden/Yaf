@@ -1,0 +1,217 @@
+# Ejemplo 8: Algoritmos Avanzados
+
+# Búsqueda lineal simple
+func buscar_lineal(valor: int) -> int {
+    if valor == 30 {
+        return 2
+    }
+    if valor == 20 {
+        return 1
+    }
+    if valor == 10 {
+        return 0
+    }
+    return -1
+}
+
+# Búsqueda binaria simulada con bucles FOR
+func buscar_binario(valor: int) -> int {
+    # Simulamos array ordenado [10, 20, 30, 40, 50]
+    inicio = 0
+    fin = 4
+    
+    for iteraciones = 0; iteraciones < 10; iteraciones = iteraciones + 1 {
+        if inicio > fin {
+            return -1
+        }
+        
+        medio = (inicio + fin) / 2
+        
+        # Simulamos acceso al array en posición 'medio'
+        elemento = 0
+        if medio == 0 { elemento = 10 }
+        if medio == 1 { elemento = 20 }
+        if medio == 2 { elemento = 30 }
+        if medio == 3 { elemento = 40 }
+        if medio == 4 { elemento = 50 }
+        
+        if elemento == valor {
+            return medio
+        }
+        
+        if elemento < valor {
+            inicio = medio + 1
+        } else {
+            fin = medio - 1
+        }
+    }
+    
+    return -1
+}
+
+# Factorial recursivo
+func factorial(n: int) -> int {
+    if n <= 1 {
+        return 1
+    }
+    return n * factorial(n - 1)
+}
+
+# Fibonacci iterativo usando bucles FOR
+func fibonacci(n: int) -> int {
+    if n <= 1 {
+        return n
+    }
+    
+    a = 0
+    b = 1
+    
+    for i = 2; i <= n; i = i + 1 {
+        temp = a + b
+        a = b
+        b = temp
+    }
+    
+    return b
+}
+
+# Ordenamiento burbuja para 3 elementos
+func ordenar_burbuja(a: int, b: int, c: int) -> int {
+    # Ordenamiento burbuja de 3 elementos, retorna el del medio
+    
+    # Primera pasada
+    if a > b {
+        temp = a
+        a = b
+        b = temp
+    }
+    if b > c {
+        temp = b
+        b = c
+        c = temp
+    }
+    
+    # Segunda pasada para asegurar orden completo
+    if a > b {
+        temp = a
+        a = b
+        b = temp
+    }
+    
+    return b  # El elemento del medio después del ordenamiento
+}
+
+# Máximo común divisor (Algoritmo de Euclides)
+func mcd(a: int, b: int) -> int {
+    # Algoritmo de Euclides iterativo
+    for i = 0; i < 50; i = i + 1 {
+        if b == 0 {
+            return a
+        }
+        
+        temp = b
+        b = a % b
+        a = temp
+    }
+    return a
+}
+
+# Potencia eficiente usando bucles FOR
+func potencia(base: int, exp: int) -> int {
+    if exp == 0 { return 1 }
+    
+    resultado = 1
+    for i = 0; i < exp; i = i + 1 {
+        resultado = resultado * base
+    }
+    
+    return resultado
+}
+
+# Verificar si es primo usando bucles FOR
+func es_primo(n: int) -> int {
+    if n <= 1 { return 0 }  # No es primo
+    if n == 2 { return 1 }  # Es primo
+    if n % 2 == 0 { return 0 }  # Par, no es primo
+    
+    # Verificar divisores impares hasta sqrt(n)
+    limite = n / 2  # Aproximación simple de sqrt
+    for divisor = 3; divisor <= limite; divisor = divisor + 2 {
+        if n % divisor == 0 {
+            return 0  # Encontramos un divisor, no es primo
+        }
+    }
+    
+    return 1  # Es primo
+}
+
+# Suma iterativa usando bucles FOR
+func suma_iterativa(n: int) -> int {
+    suma = 0
+    for i = 1; i <= n; i = i + 1 {
+        suma = suma + i
+    }
+    return suma
+}
+
+func main() {
+    print("=== Algoritmos Avanzados ===")
+    print("")
+    
+    # Búsquedas
+    print("1. Búsqueda Lineal:")
+    resultado = buscar_lineal(30)
+    print("Buscar 30: posición ", int_to_string(resultado))
+    
+    print("")
+    print("2. Búsqueda Binaria:")
+    pos = buscar_binario(30)
+    print("Buscar 30 en [10,20,30,40,50]: posición ", int_to_string(pos))
+    
+    # Recursión
+    print("")
+    print("3. Factorial Recursivo:")
+    fact = factorial(5)
+    print("5! = ", int_to_string(fact))
+    
+    # Fibonacci iterativo
+    print("")
+    print("4. Fibonacci Iterativo:")
+    fib = fibonacci(8)
+    print("fib(8) = ", int_to_string(fib))
+    
+    # Ordenamiento
+    print("")
+    print("5. Ordenamiento Burbuja:")
+    medio = ordenar_burbuja(50, 20, 80)
+    print("Mediana de [50,20,80]: ", int_to_string(medio))
+    
+    # MCD
+    print("")
+    print("6. Máximo Común Divisor:")
+    gcd_result = mcd(48, 18)
+    print("MCD(48, 18) = ", int_to_string(gcd_result))
+    
+    # Potencia
+    print("")
+    print("7. Potencia:")
+    pow_result = potencia(2, 10)
+    print("2^10 = ", int_to_string(pow_result))
+    
+    # Verificar primos
+    print("")
+    print("8. Verificar Primos:")
+    primo13 = es_primo(13)
+    primo15 = es_primo(15)
+    print("¿Es 13 primo? ", int_to_string(primo13))
+    print("¿Es 15 primo? ", int_to_string(primo15))
+    
+    # Suma iterativa
+    print("")
+    print("9. Suma Iterativa:")
+    suma = suma_iterativa(10)
+    print("Suma de 1 a 10 = ", int_to_string(suma))
+    
+    print("")
+    print("¡Todos los algoritmos avanzados ejecutados!")
+}

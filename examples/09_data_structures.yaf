@@ -1,0 +1,184 @@
+# Ejemplo 9: Estructuras de Datos Avanzadas
+
+# Simulación de Array Dinámico
+func array_insertar(arr1: int, arr2: int, arr3: int, pos: int, valor: int) -> int {
+    # Inserta en posición específica, retorna nuevo tamaño
+    if pos == 0 {
+        return valor  # Nuevo primer elemento
+    }
+    if pos == 1 {
+        return arr1   # Valor desplazado
+    }
+    if pos == 2 {
+        return arr2   # Valor desplazado
+    }
+    return arr3
+}
+
+func array_buscar(arr1: int, arr2: int, arr3: int, arr4: int, valor: int) -> int {
+    # Búsqueda lineal en array simulado
+    if arr1 == valor { return 0 }
+    if arr2 == valor { return 1 }
+    if arr3 == valor { return 2 }
+    if arr4 == valor { return 3 }
+    return -1
+}
+
+# Simulación de Pila (Stack)
+func pila_push(top: int, valor: int) -> int {
+    # Retorna nuevo top
+    return valor
+}
+
+func pila_pop(top: int) -> int {
+    # Simula pop retornando valor anterior
+    return top - 10
+}
+
+# Simulación de Cola (Queue)
+func cola_enqueue(frente: int, valor: int) -> int {
+    return valor
+}
+
+func cola_dequeue(frente: int) -> int {
+    return frente + 5
+}
+
+# Simulación de Lista Enlazada
+func lista_insertar_inicio(primero: int, valor: int) -> int {
+    # El nuevo valor se convierte en el primero
+    return valor
+}
+
+func lista_buscar(nodo1: int, nodo2: int, nodo3: int, valor: int) -> int {
+    # Búsqueda en lista enlazada simulada
+    if nodo1 == valor { return 0 }
+    if nodo2 == valor { return 1 }
+    if nodo3 == valor { return 2 }
+    return -1
+}
+
+# Operaciones de Set (conjunto)
+func set_contiene(elem1: int, elem2: int, elem3: int, valor: int) -> int {
+    # 1 si contiene, 0 si no
+    if elem1 == valor { return 1 }
+    if elem2 == valor { return 1 }
+    if elem3 == valor { return 1 }
+    return 0
+}
+
+# Simulación de Hash Table
+func hash_simple(clave: int) -> int {
+    # Función hash simple
+    return clave % 7
+}
+
+func hash_insertar(tabla_pos: int, clave: int, valor: int) -> int {
+    # Retorna el valor insertado
+    hash_val = hash_simple(clave)
+    return valor
+}
+
+func main() {
+    print("=== Estructuras de Datos Avanzadas ===")
+    print("")
+    
+    # Array Dinámico
+    print("1. Array Dinámico:")
+    arr1 = 10
+    arr2 = 20
+    arr3 = 30
+    arr4 = 0
+    
+    print("Array inicial: [", int_to_string(arr1), ", ", int_to_string(arr2), ", ", int_to_string(arr3), "]")
+    
+    # Insertar elemento
+    nuevo_elem = array_insertar(arr1, arr2, arr3, 1, 15)
+    print("Insertar 15 en posición 1")
+    print("Nuevo elemento: ", int_to_string(nuevo_elem))
+    
+    # Buscar elemento
+    arr4 = 40
+    pos_encontrada = array_buscar(arr1, arr2, arr3, arr4, 30)
+    print("Buscar 30: posición ", int_to_string(pos_encontrada))
+    
+    # Pila (Stack)
+    print("")
+    print("2. Pila (Stack):")
+    pila_top = 0
+    
+    pila_top = pila_push(pila_top, 100)
+    print("Push 100: top = ", int_to_string(pila_top))
+    
+    pila_top = pila_push(pila_top, 200)
+    print("Push 200: top = ", int_to_string(pila_top))
+    
+    pila_top = pila_pop(pila_top)
+    print("Pop: nuevo top = ", int_to_string(pila_top))
+    
+    # Cola (Queue)
+    print("")
+    print("3. Cola (Queue):")
+    cola_frente = 50
+    cola_atras = 50
+    
+    cola_atras = cola_enqueue(cola_atras, 60)
+    print("Enqueue 60: atrás = ", int_to_string(cola_atras))
+    
+    cola_atras = cola_enqueue(cola_atras, 70)
+    print("Enqueue 70: atrás = ", int_to_string(cola_atras))
+    
+    cola_frente = cola_dequeue(cola_frente)
+    print("Dequeue: frente = ", int_to_string(cola_frente))
+    
+    # Lista Enlazada
+    print("")
+    print("4. Lista Enlazada:")
+    lista_head = 1
+    
+    lista_head = lista_insertar_inicio(lista_head, 5)
+    print("Insertar 5 al inicio: head = ", int_to_string(lista_head))
+    
+    lista_head = lista_insertar_inicio(lista_head, 3)
+    print("Insertar 3 al inicio: head = ", int_to_string(lista_head))
+    
+    # Buscar en lista
+    pos_lista = lista_buscar(3, 5, 1, 5)
+    print("Buscar 5 en lista: posición ", int_to_string(pos_lista))
+    
+    # Set (Conjunto)
+    print("")
+    print("5. Set (Conjunto):")
+    set_elem1 = 10
+    set_elem2 = 20
+    set_elem3 = 30
+    
+    existe = set_contiene(set_elem1, set_elem2, set_elem3, 20)
+    print("¿Contiene 20? ", int_to_string(existe))
+    
+    existe = set_contiene(set_elem1, set_elem2, set_elem3, 40)
+    print("¿Contiene 40? ", int_to_string(existe))
+    
+    # Hash Table
+    print("")
+    print("6. Hash Table:")
+    clave = 25
+    hash_resultado = hash_simple(clave)
+    print("Hash de 25: ", int_to_string(hash_resultado))
+    
+    valor_insertado = hash_insertar(hash_resultado, clave, 999)
+    print("Insertar (25, 999): valor = ", int_to_string(valor_insertado))
+    
+    # Operaciones combinadas
+    print("")
+    print("7. Operaciones Combinadas:")
+    suma_total = arr1 + arr2 + arr3 + pila_top + cola_frente
+    print("Suma de elementos activos: ", int_to_string(suma_total))
+    
+    # Estadísticas (simplificado)
+    count = 5  # Simulamos contar 5 elementos
+    print("Elementos procesados: ", int_to_string(count))
+    
+    print("")
+    print("¡Todas las estructuras de datos simuladas!")
+}

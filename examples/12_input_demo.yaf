@@ -1,0 +1,198 @@
+# Ejemplo 12: Demo Completo de Input y Análisis Estadístico
+# Sistema avanzado de entrada de datos con análisis matemático
+
+func validar_positivo(numero: int) -> int {
+    if numero > 0 {
+        return 1  # Válido
+    } else {
+        return 0  # Inválido
+    }
+}
+
+func encontrar_maximo(nums: int, num1: int, num2: int, num3: int, num4: int, num5: int) -> int {
+    maximo = num1
+    
+    if nums >= 2 && num2 > maximo {
+        maximo = num2
+    }
+    if nums >= 3 && num3 > maximo {
+        maximo = num3
+    }
+    if nums >= 4 && num4 > maximo {
+        maximo = num4
+    }
+    if nums >= 5 && num5 > maximo {
+        maximo = num5
+    }
+    
+    return maximo
+}
+
+func encontrar_minimo(nums: int, num1: int, num2: int, num3: int, num4: int, num5: int) -> int {
+    minimo = num1
+    
+    if nums >= 2 && num2 < minimo {
+        minimo = num2
+    }
+    if nums >= 3 && num3 < minimo {
+        minimo = num3
+    }
+    if nums >= 4 && num4 < minimo {
+        minimo = num4
+    }
+    if nums >= 5 && num5 < minimo {
+        minimo = num5
+    }
+    
+    return minimo
+}
+
+func clasificar_numero(numero: int) -> int {
+    if numero < 10 {
+        return 1  # Pequeño
+    } else {
+        if numero < 100 {
+            return 2  # Mediano
+        } else {
+            return 3  # Grande
+        }
+    }
+}
+
+func main() {
+    print("=== 📊 ANALIZADOR ESTADÍSTICO YAF 📊 ===")
+    print("Sistema avanzado de análisis de datos")
+    
+    print("")
+    print("Ingresa tu nombre: ")
+    analista = input()
+    print("¡Bienvenido ", analista, "!")
+    
+    print("")
+    print("🔢 ¿Cuántos números quieres analizar? (1-5): ")
+    cantidad_str = input()
+    cantidad = string_to_int(cantidad_str)
+    
+    if cantidad < 1 || cantidad > 5 {
+        print("❌ Cantidad inválida. Usando 3 números por defecto.")
+        cantidad = 3
+    }
+    
+    # Variables para almacenar hasta 5 números
+    num1 = 0
+    num2 = 0
+    num3 = 0
+    num4 = 0
+    num5 = 0
+    suma_total = 0
+    numeros_pequenos = 0
+    numeros_medianos = 0
+    numeros_grandes = 0
+    
+    print("")
+    print("📝 Ingresa ", int_to_string(cantidad), " números positivos:")
+    
+    for i = 1; i <= cantidad; i = i + 1 {
+        print("Número ", int_to_string(i), ": ")
+        numero_str = input()
+        numero = string_to_int(numero_str)
+        
+        # Validar que sea positivo
+        es_valido = validar_positivo(numero)
+        if es_valido == 0 {
+            print("⚠️  Número no positivo, usando valor absoluto")
+            if numero < 0 {
+                numero = 0 - numero  # Valor absoluto
+            } else {
+                numero = 1  # Si es cero, usar 1
+            }
+        }
+        
+        # Almacenar según posición
+        if i == 1 {
+            num1 = numero
+        } else {
+            if i == 2 {
+                num2 = numero
+            } else {
+                if i == 3 {
+                    num3 = numero
+                } else {
+                    if i == 4 {
+                        num4 = numero
+                    } else {
+                        num5 = numero
+                    }
+                }
+            }
+        }
+        
+        # Clasificar número
+        clasificacion = clasificar_numero(numero)
+        if clasificacion == 1 {
+            numeros_pequenos = numeros_pequenos + 1
+            print("  → Clasificado como: PEQUEÑO (< 10)")
+        } else {
+            if clasificacion == 2 {
+                numeros_medianos = numeros_medianos + 1
+                print("  → Clasificado como: MEDIANO (10-99)")
+            } else {
+                numeros_grandes = numeros_grandes + 1
+                print("  → Clasificado como: GRANDE (≥ 100)")
+            }
+        }
+        
+        suma_total = suma_total + numero
+        print("  → Suma acumulada: ", int_to_string(suma_total))
+    }
+    
+    # Análisis estadístico
+    print("")
+    print("=== 📈 ANÁLISIS ESTADÍSTICO ===")
+    print("Analista: ", analista)
+    print("Números analizados: ", int_to_string(cantidad))
+    print("")
+    
+    # Estadísticas básicas
+    promedio = suma_total / cantidad
+    print("📊 Suma total: ", int_to_string(suma_total))
+    print("📊 Promedio: ", int_to_string(promedio))
+    
+    # Máximo y mínimo
+    maximo = encontrar_maximo(cantidad, num1, num2, num3, num4, num5)
+    minimo = encontrar_minimo(cantidad, num1, num2, num3, num4, num5)
+    print("📊 Número máximo: ", int_to_string(maximo))
+    print("📊 Número mínimo: ", int_to_string(minimo))
+    print("📊 Rango: ", int_to_string(maximo - minimo))
+    
+    # Distribución por tamaños
+    print("")
+    print("=== 📈 DISTRIBUCIÓN POR TAMAÑOS ===")
+    print("Pequeños (< 10): ", int_to_string(numeros_pequenos))
+    print("Medianos (10-99): ", int_to_string(numeros_medianos))
+    print("Grandes (≥ 100): ", int_to_string(numeros_grandes))
+    
+    # Análisis avanzado
+    print("")
+    print("=== 🎯 ANÁLISIS AVANZADO ===")
+    
+    if promedio > 50 {
+        print("💹 Dataset con tendencia ALTA (promedio > 50)")
+    } else {
+        print("📉 Dataset con tendencia BAJA (promedio ≤ 50)")
+    }
+    
+    if numeros_grandes > numeros_pequenos {
+        print("📊 Predominan números GRANDES")
+    } else {
+        if numeros_pequenos > numeros_grandes {
+            print("📊 Predominan números PEQUEÑOS")
+        } else {
+            print("📊 Distribución EQUILIBRADA")
+        }
+    }
+    
+    print("")
+    print("✅ Análisis completado exitosamente")
+    print("🚀 Gracias por usar el Analizador YAF, ", analista, "!")
+}

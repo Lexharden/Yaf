@@ -1,0 +1,42 @@
+# Ejemplo 3: Sistema de Verificacion
+# Condicionales con input del usuario
+
+func main() {
+    print("=== Sistema de Verificacion ===")
+    
+    print("Ingresa tu nombre: ")
+    nombre = input()
+    
+    print("Hola ", nombre, "! Ingresa tu edad: ")
+    edad_str = input()
+    edad = string_to_int(edad_str)
+    
+    print("\nVerificando edad de ", nombre, "...")
+    
+    if edad >= 18 {
+        print("✓ Eres mayor de edad (", int_to_string(edad), " años)")
+        
+        if edad >= 65 {
+            print("✓ Califica para descuento de adulto mayor")
+        }
+    } else {
+        print("✗ Eres menor de edad (", int_to_string(edad), " años)")
+        años_faltantes = 18 - edad
+        print("Te faltan ", int_to_string(años_faltantes), " años para ser mayor de edad")
+    }
+    
+    print("\nIngresa la temperatura actual: ")
+    temp_str = input()
+    temperatura = string_to_int(temp_str)
+    
+    print("\nReporte del clima:")
+    if temperatura > 30 {
+        print("🔥 Hace mucho calor (", int_to_string(temperatura), "°C)")
+    } else {
+        if temperatura < 15 {
+            print("🧊 Hace frio (", int_to_string(temperatura), "°C)")
+        } else {
+            print("🌤️ Temperatura agradable (", int_to_string(temperatura), "°C)")
+        }
+    }
+}

@@ -1,0 +1,56 @@
+# Ejemplo 7: Strings
+# Operaciones con cadenas de texto
+
+func comparar_strings(a: string, b: string) -> bool {
+    if a == b {
+        return true
+    }
+    return false
+}
+
+func verificar_vacio(texto: string) -> bool {
+    if texto == "" {
+        return true
+    }
+    return false
+}
+
+func main() {
+    print("=== Strings ===")
+    
+    # Concatenacion basica
+    nombre = "Juan"
+    apellido = "Perez"
+    nombre_completo = nombre + " " + apellido
+    print(nombre_completo)
+    
+    # Operaciones con strings
+    saludo = "Hola"
+    mensaje = saludo + ", " + nombre + "!"
+    print(mensaje)
+    
+    # Comparaciones
+    texto1 = "Hola"
+    texto2 = "Hola"
+    texto3 = "Adios"
+    
+    if comparar_strings(texto1, texto2) {
+        print("Textos iguales")
+    }
+    
+    if !comparar_strings(texto1, texto3) {
+        print("Textos diferentes")
+    }
+    
+    # Verificar string vacio
+    vacio = ""
+    if verificar_vacio(vacio) {
+        print("String vacio detectado")
+    }
+    
+    # Construccion de strings
+    prefijo = "Linea"
+    sufijo = "procesada"
+    resultado = prefijo + " " + sufijo
+    print(resultado)
+}
